@@ -1,0 +1,4 @@
+﻿split,dataReplay_records,suddenConstantSpeed_records,dataReplay_unique_keys,suddenConstantSpeed_unique_keys,common_keys,keys_only_dataReplay,keys_only_suddenConstantSpeed,exact_core_record_matches,matched_label_equal,matched_label_different,keys_with_core_field_differences,unmatched_duplicate_excess,matched_label_pairs
+Train,37701,37701,34181,37662,34181,0,3481,27903,29926,4290,6306,3485,"{""0->0"": 29831, ""0->1"": 1329, ""1->0"": 2961, ""1->1"": 95}"
+Validation,17977,17977,16000,17942,16000,0,1942,13101,14200,1833,2928,1944,"{""0->0"": 14200, ""0->1"": 565, ""1->0"": 1268}"
+Test,44259,44259,38744,44185,38744,0,5441,31928,34568,4238,6864,5453,"{""0->0"": 34427, ""0->1"": 1089, ""1->0"": 3149, ""1->1"": 141}"

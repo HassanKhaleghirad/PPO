@@ -1,0 +1,13 @@
+﻿scenario,split,group,records,benign_0,attack_1,other_labels,attack_pct
+dataReplay,Train,matched,27903,27903,0,0,0.0
+dataReplay,Train,scenario_only,9798,3257,6541,0,66.75852214737702
+suddenConstantSpeed,Train,matched,27903,27903,0,0,0.0
+suddenConstantSpeed,Train,scenario_only,9798,8270,1528,0,15.595019391712594
+dataReplay,Validation,matched,13101,13101,0,0,0.0
+dataReplay,Validation,scenario_only,4876,1664,3212,0,65.87366694011484
+suddenConstantSpeed,Validation,matched,13101,13101,0,0,0.0
+suddenConstantSpeed,Validation,scenario_only,4876,4311,565,0,11.587366694011484
+dataReplay,Test,matched,31928,31928,0,0,0.0
+dataReplay,Test,scenario_only,12331,3588,8743,0,70.90260319519909
+suddenConstantSpeed,Test,matched,31928,31928,0,0,0.0
+suddenConstantSpeed,Test,scenario_only,12331,10760,1571,0,12.740248155056362

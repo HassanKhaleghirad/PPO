@@ -1,0 +1,126 @@
+InTAS archive audit
+Working directory: /home/h/Documents/PPO
+
+========================================================================================
+SCENARIO: dataReplay
+ARCHIVE: InTAS_highway_2_dataReplay.zip
+SIZE_BYTES: 19733975
+EXPECTED_MD5: 9515b57c25dd34304642654dd22df66b
+ACTUAL_MD5: 9515b57c25dd34304642654dd22df66b
+MD5_OK: True
+ZIP_INTEGRITY: OK
+TOP_LEVEL_FILE_COUNT: 3
+ARCHIVE_PATHS (first 100):
+  InTAS_highway_2_dataReplay/Train/InTAS_highway_2_dataReplay.zip
+  InTAS_highway_2_dataReplay/Test/InTAS_highway_2_dataReplay.zip
+  InTAS_highway_2_dataReplay/Validation/InTAS_highway_2_dataReplay.zip
+TOP_LEVEL_EXTENSIONS: {'.zip': 3}
+TOP_LEVEL_PATH_SPLITS: {'Train': 1, 'Test': 1, 'Validation': 1}
+SAMPLE_RECORD | split=Train | file=InTAS_highway_2_dataReplay/Train/InTAS_highway_2_dataReplay.zip!/highway_2_dataReplay/veh_4079.json | path=$[0]
+  KEYS: ['rcvTime', 'sendTime', 'sender_id', 'sender_alias', 'messageID', 'attacker', 'receiver', 'sender']
+  FIELDS: {'rcvTime': '12590441898302', 'sendTime': '12590440832645', 'sender_id': "'veh_3923'", 'sender_alias': '4302773759', 'messageID': '28110', 'attacker': '0', 'receiver': "{'pos': '216431.9039940983,452977.78784752765,0.0', 'pos_noise': '-1.7636415175765547,2.4647807352135187,0.0', 'spd': 15.839357266444212, 'spd_noise': 0.0014714...", 'sender': "{'pos': '216320.09558287365,452693.46525513876,0.0', 'pos_noise': '3.172958691645046,0.9296887968289391,0.0', 'spd': 11.612727861140277, 'spd_noise': 0.00297252..."}
+SAMPLE_RECORD | split=Train | file=InTAS_highway_2_dataReplay/Train/InTAS_highway_2_dataReplay.zip!/highway_2_dataReplay/veh_4079.json | path=$[1]
+  KEYS: ['rcvTime', 'sendTime', 'sender_id', 'sender_alias', 'messageID', 'attacker', 'receiver', 'sender']
+  FIELDS: {'rcvTime': '12591442225061', 'sendTime': '12591440832645', 'sender_id': "'veh_3923'", 'sender_alias': '4302773759', 'messageID': '28112', 'attacker': '0', 'receiver': "{'pos': '216438.0873652392,452964.509335303,0.0', 'pos_noise': '-1.642399244927234,2.6823765144300684,0.0', 'spd': 14.79681173235428, 'spd_noise': 0.00137464515...", 'sender': "{'pos': '216331.54176573787,452692.9737012488,0.0', 'pos_noise': '3.0730480646128253,1.0233443397269264,0.0', 'spd': 11.471379913103945, 'spd_noise': 0.00293633..."}
+SAMPLE_RECORD | split=Train | file=InTAS_highway_2_dataReplay/Train/InTAS_highway_2_dataReplay.zip!/highway_2_dataReplay/veh_4079.json | path=$[2]
+  KEYS: ['rcvTime', 'sendTime', 'sender_id', 'sender_alias', 'messageID', 'attacker', 'receiver', 'sender']
+  FIELDS: {'rcvTime': '12592442144961', 'sendTime': '12592440832645', 'sender_id': "'veh_3923'", 'sender_alias': '4302773759', 'messageID': '28114', 'attacker': '0', 'receiver': "{'pos': '216444.09407648866,452950.9201192028,0.0', 'pos_noise': '-1.6997342600526824,2.5935371145586443,0.0', 'spd': 14.801491829597257, 'spd_noise': 0.0013750...", 'sender': "{'pos': '216343.51120913037,452691.1903498594,0.0', 'pos_noise': '3.1292174750740087,0.9372770484327274,0.0', 'spd': 11.912584488842207, 'spd_noise': 0.00304927..."}
+SAMPLE_RECORD | split=Test | file=InTAS_highway_2_dataReplay/Test/InTAS_highway_2_dataReplay.zip!/InTAS_highway_2_dataReplay\veh_2358.json | path=$[0]
+  KEYS: ['rcvTime', 'sendTime', 'sender_id', 'sender_alias', 'messageID', 'attacker', 'receiver', 'sender']
+  FIELDS: {'rcvTime': '7454120545804', 'sendTime': '7454118965202', 'sender_id': "'veh_2489'", 'sender_alias': '8964309628', 'messageID': '896', 'attacker': '1', 'receiver': "{'pos': '216234.9122758789,449964.8511230107,0.0', 'pos_noise': '-4.006270223148182,-0.7104879313920387,0.0', 'spd': 12.406450492506115, 'spd_noise': 0.00153428...", 'sender': "{'pos': '216307.02419988762,450032.55339521053,0.0', 'pos_noise': '-3.3445920789973558,2.0214834784351896,0.0', 'spd': 19.131578764618162, 'spd_noise': 0.001762..."}
+SAMPLE_RECORD | split=Test | file=InTAS_highway_2_dataReplay/Test/InTAS_highway_2_dataReplay.zip!/InTAS_highway_2_dataReplay\veh_2358.json | path=$[1]
+  KEYS: ['rcvTime', 'sendTime', 'sender_id', 'sender_alias', 'messageID', 'attacker', 'receiver', 'sender']
+  FIELDS: {'rcvTime': '7454127520973', 'sendTime': '7454126174647', 'sender_id': "'veh_2502'", 'sender_alias': '2627628185', 'messageID': '897', 'attacker': '0', 'receiver': "{'pos': '216165.59912879244,450006.7096535714,0.0', 'pos_noise': '2.168759926180161,0.07978484535481195,0.0', 'spd': 12.406450492506115, 'spd_noise': 0.00153428...", 'sender': "{'pos': '216398.39125230856,449863.82122747577,0.0', 'pos_noise': '4.2606147875372296,-3.8342497654800263,0.0', 'spd': 15.184740281273143, 'spd_noise': 0.002996..."}
+SAMPLE_RECORD | split=Test | file=InTAS_highway_2_dataReplay/Test/InTAS_highway_2_dataReplay.zip!/InTAS_highway_2_dataReplay\veh_2358.json | path=$[2]
+  KEYS: ['rcvTime', 'sendTime', 'sender_id', 'sender_alias', 'messageID', 'attacker', 'receiver', 'sender']
+  FIELDS: {'rcvTime': '7454390493997', 'sendTime': '7454389201022', 'sender_id': "'veh_2487'", 'sender_alias': '8257230114', 'messageID': '900', 'attacker': '0', 'receiver': "{'pos': '216165.57093967975,450006.70848946413,0.0', 'pos_noise': '2.140570813503236,0.07862073804784482,0.0', 'spd': 12.406450492506115, 'spd_noise': 0.0015342...", 'sender': "{'pos': '216390.9986734132,450049.2321565493,0.0', 'pos_noise': '-3.58002909445933,2.0849557514758392,0.0', 'spd': 20.352847521206968, 'spd_noise': 0.0018754902..."}
+SAMPLE_RECORD | split=Validation | file=InTAS_highway_2_dataReplay/Validation/InTAS_highway_2_dataReplay.zip!/highway_2_dataReplay/veh_4079.json | path=$[0]
+  KEYS: ['rcvTime', 'sendTime', 'sender_id', 'sender_alias', 'messageID', 'attacker', 'receiver', 'sender']
+  FIELDS: {'rcvTime': '12600442361408', 'sendTime': '12600440832645', 'sender_id': "'veh_3923'", 'sender_alias': '4302773759', 'messageID': '28130', 'attacker': '0', 'receiver': "{'pos': '216473.9790813786,452833.7488744708,0.0', 'pos_noise': '-1.8102960072867393,2.567871184326739,0.0', 'spd': 15.125680051051251, 'spd_noise': 0.001405197...", 'sender': "{'pos': '216422.05096793888,452642.8188841718,0.0', 'pos_noise': '3.3380984171178527,1.0005260686707516,0.0', 'spd': 11.657807527707943, 'spd_noise': 0.00298405..."}
+SAMPLE_RECORD | split=Validation | file=InTAS_highway_2_dataReplay/Validation/InTAS_highway_2_dataReplay.zip!/highway_2_dataReplay/veh_4079.json | path=$[1]
+  KEYS: ['rcvTime', 'sendTime', 'sender_id', 'sender_alias', 'messageID', 'attacker', 'receiver', 'sender']
+  FIELDS: {'rcvTime': '12601442405068', 'sendTime': '12601440832645', 'sender_id': "'veh_3923'", 'sender_alias': '4302773759', 'messageID': '28132', 'attacker': '0', 'receiver': "{'pos': '216475.60534356686,452818.2104021055,0.0', 'pos_noise': '-1.7183521726485063,2.530163335817113,0.0', 'spd': 15.519787159160947, 'spd_noise': 0.00144181...", 'sender': "{'pos': '216427.4095880261,452632.68092463043,0.0', 'pos_noise': '2.9392797571149125,0.9524791295749244,0.0', 'spd': 11.601684266264723, 'spd_noise': 0.00296969..."}
+SAMPLE_RECORD | split=Validation | file=InTAS_highway_2_dataReplay/Validation/InTAS_highway_2_dataReplay.zip!/highway_2_dataReplay/veh_4079.json | path=$[2]
+  KEYS: ['rcvTime', 'sendTime', 'sender_id', 'sender_alias', 'messageID', 'attacker', 'receiver', 'sender']
+  FIELDS: {'rcvTime': '12602442157646', 'sendTime': '12602440832645', 'sender_id': "'veh_3923'", 'sender_alias': '4302773759', 'messageID': '28134', 'attacker': '0', 'receiver': "{'pos': '216477.07415841674,452802.45905137033,0.0', 'pos_noise': '-1.80906315976662,2.576728803396575,0.0', 'spd': 15.816873785280963, 'spd_noise': 0.001469410...", 'sender': "{'pos': '216433.09182942283,452622.4302612861,0.0', 'pos_noise': '2.9432460207136675,1.0387712807762324,0.0', 'spd': 11.669291395125748, 'spd_noise': 0.00298699..."}
+
+JSON AUDIT:
+JSON_DOCUMENTS_BY_SPLIT: {'Train': 482, 'Test': 476, 'Validation': 152}
+RECORDS_WITH_ATTACKER_BY_SPLIT: {'Train': 37701, 'Test': 44259, 'Validation': 17977}
+JSON_FILES_WITHOUT_ATTACKER_RECORDS: {}
+ATTACKER_DISTRIBUTION: {('Train', '0'): 31160, ('Train', '1'): 6541, ('Test', '1'): 8743, ('Test', '0'): 35516, ('Validation', '0'): 14765, ('Validation', '1'): 3212}
+EXACT_DUPLICATE_RECORDS_WITHIN_ARCHIVE: {}
+RECORD_SCHEMA_COUNTS:
+  split=Test count=44259 keys=('attacker', 'messageID', 'rcvTime', 'receiver', 'sendTime', 'sender', 'sender_alias', 'sender_id')
+  split=Train count=37701 keys=('attacker', 'messageID', 'rcvTime', 'receiver', 'sendTime', 'sender', 'sender_alias', 'sender_id')
+  split=Validation count=17977 keys=('attacker', 'messageID', 'rcvTime', 'receiver', 'sendTime', 'sender', 'sender_alias', 'sender_id')
+
+SPLIT SUMMARY:
+  Train: JSON documents=482, records with attacker=37701
+  Validation: JSON documents=152, records with attacker=17977
+  Test: JSON documents=476, records with attacker=44259
+  UNKNOWN: JSON documents=0, records with attacker=0
+
+NOTE: UNKNOWN means the split was not identifiable from the JSON member path. It does not prove that the split is absent.
+
+========================================================================================
+SCENARIO: suddenConstantSpeed
+ARCHIVE: InTAS_highway_2_suddenConstantSpeed.zip
+SIZE_BYTES: 20735610
+EXPECTED_MD5: 32351002170f4690460a9f585d7d6048
+ACTUAL_MD5: 32351002170f4690460a9f585d7d6048
+MD5_OK: True
+ZIP_INTEGRITY: OK
+TOP_LEVEL_FILE_COUNT: 3
+ARCHIVE_PATHS (first 100):
+  InTAS_highway_2_suddenConstantSpeed/Train/InTAS_highway_2_suddenConstantSpeed.zip
+  InTAS_highway_2_suddenConstantSpeed/Test/InTAS_highway_2_suddenConstantSpeed.zip
+  InTAS_highway_2_suddenConstantSpeed/Validation/InTAS_highway_2_suddenConstantSpeed.zip
+TOP_LEVEL_EXTENSIONS: {'.zip': 3}
+TOP_LEVEL_PATH_SPLITS: {'Train': 1, 'Test': 1, 'Validation': 1}
+SAMPLE_RECORD | split=Train | file=InTAS_highway_2_suddenConstantSpeed/Train/InTAS_highway_2_suddenConstantSpeed.zip!/highway_2_suddenConstantSpeed/veh_4079.json | path=$[0]
+  KEYS: ['rcvTime', 'sendTime', 'sender_id', 'sender_alias', 'messageID', 'attacker', 'receiver', 'sender']
+  FIELDS: {'rcvTime': '12590441898302', 'sendTime': '12590440832645', 'sender_id': "'veh_3923'", 'sender_alias': '4302773759', 'messageID': '28110', 'attacker': '0', 'receiver': "{'pos': '216431.9039940983,452977.78784752765,0.0', 'pos_noise': '-1.7636415175765547,2.4647807352135187,0.0', 'spd': 15.839357266444212, 'spd_noise': 0.0014714...", 'sender': "{'pos': '216320.09558287365,452693.46525513876,0.0', 'pos_noise': '3.172958691645046,0.9296887968289391,0.0', 'spd': 11.612727861140277, 'spd_noise': 0.00297252..."}
+SAMPLE_RECORD | split=Train | file=InTAS_highway_2_suddenConstantSpeed/Train/InTAS_highway_2_suddenConstantSpeed.zip!/highway_2_suddenConstantSpeed/veh_4079.json | path=$[1]
+  KEYS: ['rcvTime', 'sendTime', 'sender_id', 'sender_alias', 'messageID', 'attacker', 'receiver', 'sender']
+  FIELDS: {'rcvTime': '12591442225061', 'sendTime': '12591440832645', 'sender_id': "'veh_3923'", 'sender_alias': '4302773759', 'messageID': '28112', 'attacker': '0', 'receiver': "{'pos': '216438.0873652392,452964.509335303,0.0', 'pos_noise': '-1.642399244927234,2.6823765144300684,0.0', 'spd': 14.79681173235428, 'spd_noise': 0.00137464515...", 'sender': "{'pos': '216331.54176573787,452692.9737012488,0.0', 'pos_noise': '3.0730480646128253,1.0233443397269264,0.0', 'spd': 11.471379913103945, 'spd_noise': 0.00293633..."}
+SAMPLE_RECORD | split=Train | file=InTAS_highway_2_suddenConstantSpeed/Train/InTAS_highway_2_suddenConstantSpeed.zip!/highway_2_suddenConstantSpeed/veh_4079.json | path=$[2]
+  KEYS: ['rcvTime', 'sendTime', 'sender_id', 'sender_alias', 'messageID', 'attacker', 'receiver', 'sender']
+  FIELDS: {'rcvTime': '12592442144961', 'sendTime': '12592440832645', 'sender_id': "'veh_3923'", 'sender_alias': '4302773759', 'messageID': '28114', 'attacker': '0', 'receiver': "{'pos': '216444.09407648866,452950.9201192028,0.0', 'pos_noise': '-1.6997342600526824,2.5935371145586443,0.0', 'spd': 14.801491829597257, 'spd_noise': 0.0013750...", 'sender': "{'pos': '216343.51120913037,452691.1903498594,0.0', 'pos_noise': '3.1292174750740087,0.9372770484327274,0.0', 'spd': 11.912584488842207, 'spd_noise': 0.00304927..."}
+SAMPLE_RECORD | split=Test | file=InTAS_highway_2_suddenConstantSpeed/Test/InTAS_highway_2_suddenConstantSpeed.zip!/InTAS_highway_2_suddenConstantSpeed\veh_2358.json | path=$[0]
+  KEYS: ['rcvTime', 'sendTime', 'sender_id', 'sender_alias', 'messageID', 'attacker', 'receiver', 'sender']
+  FIELDS: {'rcvTime': '7454120545269', 'sendTime': '7454118965202', 'sender_id': "'veh_2489'", 'sender_alias': '8964309628', 'messageID': '896', 'attacker': '0', 'receiver': "{'pos': '216165.48223335444,450006.70781837654,0.0', 'pos_noise': '2.0518644881937766,0.07794965048945689,0.0', 'spd': 12.406450492506115, 'spd_noise': 0.001534...", 'sender': "{'pos': '216246.38637905233,449957.7254963751,0.0', 'pos_noise': '-4.014299909739988,-0.6953292736265126,0.0', 'spd': 0.01223657229992359, 'spd_noise': 1.257028..."}
+SAMPLE_RECORD | split=Test | file=InTAS_highway_2_suddenConstantSpeed/Test/InTAS_highway_2_suddenConstantSpeed.zip!/InTAS_highway_2_suddenConstantSpeed\veh_2358.json | path=$[1]
+  KEYS: ['rcvTime', 'sendTime', 'sender_id', 'sender_alias', 'messageID', 'attacker', 'receiver', 'sender']
+  FIELDS: {'rcvTime': '7454127520973', 'sendTime': '7454126174647', 'sender_id': "'veh_2502'", 'sender_alias': '2627628185', 'messageID': '897', 'attacker': '0', 'receiver': "{'pos': '216165.59912879244,450006.7096535714,0.0', 'pos_noise': '2.168759926180161,0.07978484535481195,0.0', 'spd': 12.406450492506115, 'spd_noise': 0.00153428...", 'sender': "{'pos': '216398.39125230856,449863.82122747577,0.0', 'pos_noise': '4.2606147875372296,-3.8342497654800263,0.0', 'spd': 15.184740281273143, 'spd_noise': 0.002996..."}
+SAMPLE_RECORD | split=Test | file=InTAS_highway_2_suddenConstantSpeed/Test/InTAS_highway_2_suddenConstantSpeed.zip!/InTAS_highway_2_suddenConstantSpeed\veh_2358.json | path=$[2]
+  KEYS: ['rcvTime', 'sendTime', 'sender_id', 'sender_alias', 'messageID', 'attacker', 'receiver', 'sender']
+  FIELDS: {'rcvTime': '7454390493997', 'sendTime': '7454389201022', 'sender_id': "'veh_2487'", 'sender_alias': '8257230114', 'messageID': '900', 'attacker': '1', 'receiver': "{'pos': '216165.57093967975,450006.70848946413,0.0', 'pos_noise': '2.140570813503236,0.07862073804784482,0.0', 'spd': 12.406450492506115, 'spd_noise': 0.0015342...", 'sender': "{'pos': '216390.9986734132,450049.2321565493,0.0', 'pos_noise': '-3.58002909445933,2.0849557514758392,0.0', 'spd': 13.23244767568251, 'spd_noise': 0.00187549024..."}
+SAMPLE_RECORD | split=Validation | file=InTAS_highway_2_suddenConstantSpeed/Validation/InTAS_highway_2_suddenConstantSpeed.zip!/highway_2_suddenConstantSpeed/veh_4079.json | path=$[0]
+  KEYS: ['rcvTime', 'sendTime', 'sender_id', 'sender_alias', 'messageID', 'attacker', 'receiver', 'sender']
+  FIELDS: {'rcvTime': '12600442361408', 'sendTime': '12600440832645', 'sender_id': "'veh_3923'", 'sender_alias': '4302773759', 'messageID': '28130', 'attacker': '0', 'receiver': "{'pos': '216473.9790813786,452833.7488744708,0.0', 'pos_noise': '-1.8102960072867393,2.567871184326739,0.0', 'spd': 15.125680051051251, 'spd_noise': 0.001405197...", 'sender': "{'pos': '216422.05096793888,452642.8188841718,0.0', 'pos_noise': '3.3380984171178527,1.0005260686707516,0.0', 'spd': 11.657807527707943, 'spd_noise': 0.00298405..."}
+SAMPLE_RECORD | split=Validation | file=InTAS_highway_2_suddenConstantSpeed/Validation/InTAS_highway_2_suddenConstantSpeed.zip!/highway_2_suddenConstantSpeed/veh_4079.json | path=$[1]
+  KEYS: ['rcvTime', 'sendTime', 'sender_id', 'sender_alias', 'messageID', 'attacker', 'receiver', 'sender']
+  FIELDS: {'rcvTime': '12601442405068', 'sendTime': '12601440832645', 'sender_id': "'veh_3923'", 'sender_alias': '4302773759', 'messageID': '28132', 'attacker': '0', 'receiver': "{'pos': '216475.60534356686,452818.2104021055,0.0', 'pos_noise': '-1.7183521726485063,2.530163335817113,0.0', 'spd': 15.519787159160947, 'spd_noise': 0.00144181...", 'sender': "{'pos': '216427.4095880261,452632.68092463043,0.0', 'pos_noise': '2.9392797571149125,0.9524791295749244,0.0', 'spd': 11.601684266264723, 'spd_noise': 0.00296969..."}
+SAMPLE_RECORD | split=Validation | file=InTAS_highway_2_suddenConstantSpeed/Validation/InTAS_highway_2_suddenConstantSpeed.zip!/highway_2_suddenConstantSpeed/veh_4079.json | path=$[2]
+  KEYS: ['rcvTime', 'sendTime', 'sender_id', 'sender_alias', 'messageID', 'attacker', 'receiver', 'sender']
+  FIELDS: {'rcvTime': '12602442157646', 'sendTime': '12602440832645', 'sender_id': "'veh_3923'", 'sender_alias': '4302773759', 'messageID': '28134', 'attacker': '0', 'receiver': "{'pos': '216477.07415841674,452802.45905137033,0.0', 'pos_noise': '-1.80906315976662,2.576728803396575,0.0', 'spd': 15.816873785280963, 'spd_noise': 0.001469410...", 'sender': "{'pos': '216433.09182942283,452622.4302612861,0.0', 'pos_noise': '2.9432460207136675,1.0387712807762324,0.0', 'spd': 11.669291395125748, 'spd_noise': 0.00298699..."}
+
+JSON AUDIT:
+JSON_DOCUMENTS_BY_SPLIT: {'Train': 482, 'Test': 476, 'Validation': 152}
+RECORDS_WITH_ATTACKER_BY_SPLIT: {'Train': 37701, 'Test': 44259, 'Validation': 17977}
+JSON_FILES_WITHOUT_ATTACKER_RECORDS: {}
+ATTACKER_DISTRIBUTION: {('Train', '0'): 36173, ('Train', '1'): 1528, ('Test', '0'): 42688, ('Test', '1'): 1571, ('Validation', '0'): 17412, ('Validation', '1'): 565}
+EXACT_DUPLICATE_RECORDS_WITHIN_ARCHIVE: {}
+RECORD_SCHEMA_COUNTS:
+  split=Test count=44259 keys=('attacker', 'messageID', 'rcvTime', 'receiver', 'sendTime', 'sender', 'sender_alias', 'sender_id')
+  split=Train count=37701 keys=('attacker', 'messageID', 'rcvTime', 'receiver', 'sendTime', 'sender', 'sender_alias', 'sender_id')
+  split=Validation count=17977 keys=('attacker', 'messageID', 'rcvTime', 'receiver', 'sendTime', 'sender', 'sender_alias', 'sender_id')
+
+SPLIT SUMMARY:
+  Train: JSON documents=482, records with attacker=37701
+  Validation: JSON documents=152, records with attacker=17977
+  Test: JSON documents=476, records with attacker=44259
+  UNKNOWN: JSON documents=0, records with attacker=0
+
+NOTE: UNKNOWN means the split was not identifiable from the JSON member path. It does not prove that the split is absent.

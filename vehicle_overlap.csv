@@ -1,0 +1,7 @@
+﻿scenario,split_a,split_b,unique_ids_a,unique_ids_b,overlap_ids,overlap_pct_of_a,overlap_pct_of_b
+dataReplay,Train,Validation,482,152,2,0.4149377593360996,1.3157894736842106
+dataReplay,Train,Test,482,476,180,37.344398340248965,37.81512605042017
+dataReplay,Validation,Test,152,476,89,58.55263157894737,18.69747899159664
+suddenConstantSpeed,Train,Validation,482,152,2,0.4149377593360996,1.3157894736842106
+suddenConstantSpeed,Train,Test,482,476,180,37.344398340248965,37.81512605042017
+suddenConstantSpeed,Validation,Test,152,476,89,58.55263157894737,18.69747899159664
