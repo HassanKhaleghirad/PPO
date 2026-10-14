@@ -1,0 +1,7 @@
+﻿scenario,split,records,attacker_0,attacker_1,unknown_label,positive_rate_pct
+dataReplay,Train,37701,31160,6541,0,17.34967242248216
+dataReplay,Validation,17977,14765,3212,0,17.867274851198754
+dataReplay,Test,44259,35516,8743,0,19.75417429223435
+suddenConstantSpeed,Train,37701,36173,1528,0,4.0529428927614655
+suddenConstantSpeed,Validation,17977,17412,565,0,3.1429048228291707
+suddenConstantSpeed,Test,44259,42688,1571,0,3.5495605413588196

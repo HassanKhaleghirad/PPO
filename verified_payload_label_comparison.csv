@@ -1,0 +1,4 @@
+﻿split,dataReplay_records,suddenConstantSpeed_records,dataReplay_unique_payloads,sudden_unique_payloads,common_exact_payloads,payloads_only_dataReplay,payloads_only_sudden,matched_payload_occurrences,same_label_occurrences,different_label_occurrences,payloads_with_label_conflicts
+Train,37701,37701,37701,37701,27903,9798,9798,27903,27903,0,0
+Validation,17977,17977,17977,17977,13101,4876,4876,13101,13101,0,0
+Test,44259,44259,44259,44259,31928,12331,12331,31928,31928,0,0

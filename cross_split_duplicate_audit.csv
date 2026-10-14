@@ -1,0 +1,7 @@
+﻿scenario,split_a,split_b,records_a,records_b,unique_payloads_a,unique_payloads_b,common_payload_signatures,shared_record_occurrences,same_label_matches,different_label_matches,signatures_only_a,signatures_only_b
+dataReplay,Train,Validation,37701,17977,37701,17977,0,0,0,0,37701,17977
+dataReplay,Train,Test,37701,44259,37701,44259,0,0,0,0,37701,44259
+dataReplay,Validation,Test,17977,44259,17977,44259,0,0,0,0,17977,44259
+suddenConstantSpeed,Train,Validation,37701,17977,37701,17977,0,0,0,0,37701,17977
+suddenConstantSpeed,Train,Test,37701,44259,37701,44259,0,0,0,0,37701,44259
+suddenConstantSpeed,Validation,Test,17977,44259,17977,44259,0,0,0,0,17977,44259

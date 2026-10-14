@@ -1,0 +1,370 @@
+MODEL FEATURE USAGE AUDIT
+Project: /home/h/Documents/PPO
+Python source files found: 11
+====================================================================================================
+
+
+====================================================================================================
+FILE: audit_cross_split_duplicates.py
+MATCHING LINES: 19
+====================================================================================================
+   25:     "sender_id",
+   26:     "sender_alias",
+   27:     "messageID",
+   28:     "rcvTime",
+   29:     "sendTime",
+   30:     "sender",
+   31:     "receiver",
+   36:     # Exclude attacker so identical payloads with different labels
+   37:     # can be detected as potential label conflicts.
+   93: def label_counts(records):
+   96:         result[signature(rec)][str(rec.get("attacker"))] += 1
+  101:     a = label_counts(data[split_a])
+  102:     b = label_counts(data[split_b])
+  109:     same_label_pairs = 0
+  116:         for label in set(a[key]) | set(b[key]):
+  117:             same_label_pairs += min(a[key][label], b[key][label])
+  119:     conflicts = shared_occurrences - same_label_pairs
+  131:         "same_label_matches": same_label_pairs,
+  132:         "different_label_matches": conflicts,
+
+
+====================================================================================================
+FILE: audit_feature_distribution.py
+MATCHING LINES: 79
+====================================================================================================
+   22: EXCLUDED_FEATURES = {
+   23:     "attacker",
+   24:     "sender_id",
+   25:     "sender_alias",
+   26:     "messageID",
+   30:     filename=ROOT / "audit_feature_distribution.log",
+   52: def flatten_record(obj, prefix=""):
+   53:     """Flatten nested dictionaries and comma-separated numeric vectors."""
+   62:         if name in EXCLUDED_FEATURES or key in EXCLUDED_FEATURES:
+   66:             result.update(flatten_record(value, name))
+  170:     label_counts = Counter()
+  171:     feature_values = defaultdict(list)
+  172:     feature_presence = Counter()
+  194:             label = str(record.get("attacker", "")).strip()
+  195:             if label in ("0", "1"):
+  196:                 label_counts[(scenario, split, label)] += 1
+  198:                 label_counts[(scenario, split, "UNKNOWN")] += 1
+  200:             sender_id = record.get("sender_id")
+  201:             if sender_id is not None:
+  202:                 vehicle_ids[key].add(str(sender_id))
+  205:             for time_field in ("rcvTime", "sendTime"):
+  215:             features = flatten_record(record)
+  218:             for name in features:
+  219:                 feature_presence[(scenario, split, name)] += 1
+  220:                 feature_values[(scenario, split, name)].append(features[name])
+  223:     label_rows = []
+  227:             positives = label_counts[(scenario, split, "1")]
+  228:             negatives = label_counts[(scenario, split, "0")]
+  229:             unknown = label_counts[(scenario, split, "UNKNOWN")]
+  231:             label_rows.append({
+  235:                 "attacker_0": negatives,
+  236:                 "attacker_1": positives,
+  237:                 "unknown_label": unknown,
+  245:         ROOT / "label_distribution.csv",
+  246:         label_rows,
+  247:         ["scenario", "split", "records", "attacker_0",
+  248:          "attacker_1", "unknown_label", "positive_rate_pct"],
+  251:     # 2) Feature distributions
+  252:     feature_rows = []
+  253:     for (scenario, split, feature), values in sorted(feature_values.items()):
+  256:         present = feature_presence[(scenario, split, feature)]
+  258:         feature_rows.append({
+  261:             "feature": feature,
+  270:         ROOT / "feature_distribution.csv",
+  271:         feature_rows,
+  272:         ["scenario", "split", "feature", "records", "present",
+  281:         features = sorted({
+  282:             feature
+  283:             for (s, split, feature) in feature_values
+  287:         for feature in features:
+  288:             train = feature_values.get((scenario, "Train", feature), [])
+  297:                 target = feature_values.get((scenario, split, feature), [])
+  298:                 if not target:
+  300:                         "scenario": scenario, "feature": feature,
+  302:                         "train_n": len(train), "target_n": 0,
+  303:                         "train_mean": train_mean, "target_mean": "",
+  306:                         "target_median": "",
+  311:                 target_mean = statistics.fmean(target)
+  312:                 target_std = (
+  313:                     statistics.pstdev(target) if len(target) > 1 else 0.0
+  315:                 target_median = statistics.median(target)
+  318:                     (train_std ** 2 + target_std ** 2) / 2
+  320:                 smd = (target_mean - train_mean) / pooled if pooled else ""
+  324:                     "feature": feature,
+  327:                     "target_n": len(target),
+  329:                     "target_mean": target_mean,
+  332:                     "target_median": target_median,
+  333:                     "median_difference": target_median - train_median,
+  337:         ROOT / "feature_shift.csv",
+  339:         ["scenario", "feature", "comparison", "train_n", "target_n",
+  340:          "train_mean", "target_mean", "standardized_mean_difference",
+  341:          "train_median", "target_median", "median_difference"],
+  377:     print("\n=== LABEL DISTRIBUTION ===")
+  378:     for row in label_rows:
+  382:             f"attack={row['attacker_1']:6d} "
+  392:         "label_distribution.csv",
+  393:         "feature_distribution.csv",
+  394:         "feature_shift.csv",
+  396:         "audit_feature_distribution.log",
+
+
+====================================================================================================
+FILE: audit_intas_archives.py
+MATCHING LINES: 14
+====================================================================================================
+   55:     """Find dictionaries containing an attacker field at any nesting level."""
+   57:         if "attacker" in obj:
+  113:         r"attacker|label|class|vehicle|sender|receiver|station|"
+  187:         attacker_values = Counter()
+  188:         missing_attacker = Counter()
+  203:                 missing_attacker[split] += 1
+  207:                 attacker = record.get("attacker")
+  208:                 attacker_values[(split, compact(attacker))] += 1
+  236:                     "attacker": compact(attacker),
+  248:         print(f"RECORDS_WITH_ATTACKER_BY_SPLIT: {dict(record_count)}", file=report)
+  249:         print(f"JSON_FILES_WITHOUT_ATTACKER_RECORDS: {dict(missing_attacker)}",
+  251:         print(f"ATTACKER_DISTRIBUTION: {dict(attacker_values)}", file=report)
+  263:                 f"records with attacker={record_count[split]}",
+  284:             "scenario", "split", "json_file", "record_path", "attacker",
+
+
+====================================================================================================
+FILE: audit_matched_unmatched_labels.py
+MATCHING LINES: 16
+====================================================================================================
+   22:         "sender_id",
+   23:         "sender_alias",
+   24:         "messageID",
+   25:         "rcvTime",
+   26:         "sendTime",
+   27:         "sender",
+   28:         "receiver",
+   87:     labels = Counter(str(r.get("attacker")) for r in records)
+   95:         "benign_0": labels.get("0", 0),
+   96:         "attack_1": labels.get("1", 0),
+   97:         "other_labels": sum(
+   98:             count for label, count in labels.items()
+   99:             if label not in ("0", "1")
+  102:             100.0 * labels.get("1", 0) / total if total else 0.0
+  128:     print("\nScenario / split / group label distributions")
+  172:     output = ROOT / "matched_unmatched_label_distribution.csv"
+
+
+====================================================================================================
+FILE: audit_model_feature_usage.py
+MATCHING LINES: 13
+====================================================================================================
+    7: OUTPUT = ROOT / "model_feature_usage_audit.txt"
+   15:     r"attacker|sender_id|sender_alias|messageID|"
+   16:     r"rcvTime|sendTime|sender|receiver|"
+   17:     r"feature|target|label|column|"
+   19:     r"\bX_val\b|\by_val\b|\bfeatures\b|\bstate\b|"
+   21:     r"ColumnTransformer|OneHotEncoder|SimpleImputer|"
+   22:     r"StandardScaler|MinMaxScaler|train_test_split|"
+   23:     r"flatten|select_dtypes|drop\(|"
+   24:     r"observation_space|observation|predict_proba|"
+   25:     r"fit_transform|\.fit\(|\.transform\(|"
+   26:     r"RandomForest|XGBClassifier|PPO\(",
+   40:     output.append("MODEL FEATURE USAGE AUDIT")
+   92:             r"feature|model|dataset|veremi|intas",
+
+
+====================================================================================================
+FILE: audit_raw_split_ranges.py
+MATCHING LINES: 19
+====================================================================================================
+  100:             "labels": Counter(),
+  101:             "senders": set(),
+  102:             "times": {"rcvTime": [], "sendTime": []},
+  104:                 "sender.pos[0]": [],
+  105:                 "sender.pos[1]": [],
+  106:                 "receiver.pos[0]": [],
+  107:                 "receiver.pos[1]": [],
+  115:         attack = rec.get("attacker")
+  116:         s["labels"][str(attack)] += 1
+  118:         sender_id = rec.get("sender_id")
+  119:         if sender_id is not None:
+  120:             s["senders"].add(str(sender_id))
+  122:         for key in ("rcvTime", "sendTime"):
+  127:         for endpoint in ("sender", "receiver"):
+  153:         print("Attacker labels:", dict(s["labels"]))
+  154:         print("Unique sender IDs:", len(s["senders"]))
+  160:             "unique_sender_ids": len(s["senders"]),
+  161:             "labels_json": json.dumps(
+  162:                 dict(s["labels"]), ensure_ascii=False
+
+
+====================================================================================================
+FILE: compare_intas_scenarios.py
+MATCHING LINES: 32
+====================================================================================================
+   51:         str(rec.get("sender_id", "")),
+   52:         str(rec.get("rcvTime", "")),
+   53:         str(rec.get("sendTime", "")),
+   54:         str(rec.get("messageID", "")),
+   55:         str(rec.get("sender_alias", "")),
+   62:         "sender_id",
+   63:         "sender_alias",
+   64:         "messageID",
+   65:         "rcvTime",
+   66:         "sendTime",
+   67:         "sender",
+   68:         "receiver",
+  133:     # by exact signature and label counts.
+  135:     label_equal = 0
+  136:     label_different = 0
+  139:     matched_label_pairs = Counter()
+  146:             (exact_signature(rec), str(rec.get("attacker")))
+  150:             (exact_signature(rec), str(rec.get("attacker")))
+  157:         left_labels = Counter(str(rec.get("attacker")) for rec in left_records)
+  158:         right_labels = Counter(str(rec.get("attacker")) for rec in right_records)
+  160:         # Compare labels for records aligned by the same key.
+  166:                 str(rec.get("attacker")),
+  173:                 str(rec.get("attacker")),
+  180:             a = str(left_ordered[i].get("attacker"))
+  181:             b = str(right_ordered[i].get("attacker"))
+  182:             matched_label_pairs[(a, b)] += 1
+  185:                 label_equal += 1
+  187:                 label_different += 1
+  206:         "matched_label_equal": label_equal,
+  207:         "matched_label_different": label_different,
+  210:         "matched_label_pairs": json.dumps(
+  213:                 for (a, b), count in sorted(matched_label_pairs.items())
+
+
+====================================================================================================
+FILE: inspect_intas_schema.py
+MATCHING LINES: 8
+====================================================================================================
+   19:         if "attacker" in obj:
+   47:     labels = defaultdict(Counter)
+   82:                                 label = str(record.get("attacker", "MISSING")).strip()
+   83:                                 labels[split][label] += 1
+  113:     print("\nRECORD AND LABEL COUNTS", file=out)
+  120:             f"labels={dict(labels[split])}",
+  124:             for label, count in sorted(labels[split].items()):
+  125:                 print(f"  attacker={label}: {count / total:.2%}", file=out)
+
+
+====================================================================================================
+FILE: run_intas_baselines.py
+MATCHING LINES: 77
+====================================================================================================
+   10: from sklearn.compose import ColumnTransformer
+   11: from sklearn.impute import SimpleImputer
+   13: from sklearn.preprocessing import OneHotEncoder
+   14: from sklearn.ensemble import RandomForestClassifier
+   24: from xgboost import XGBClassifier
+   37: CAT_COLS = ["sender_driversProfile", "receiver_driversProfile"]
+   41:     """Find records containing an attacker label in JSON lists/dicts."""
+   43:         if "attacker" in obj:
+   80: def make_features(record):
+   81:     features = {}
+   84:     # Use elapsed message delay instead of raw rcvTime/sendTime.
+   85:     rcv = numeric(record.get("rcvTime"))
+   86:     send = numeric(record.get("sendTime"))
+   88:         features["message_delay_s"] = (rcv - send) / 1_000_000.0
+   92:     for obj_name in ("sender", "receiver"):
+   99:         features[f"{obj_name}_driversProfile"] = (
+  109:                 features[f"{obj_name}_{key}"] = number
+  112:         # Keep position-noise components as observable features.
+  119:                 features[f"{obj_name}_pos_noise_{axis}"] = number
+  122:     s_pos = vectors.get("sender")
+  123:     r_pos = vectors.get("receiver")
+  128:         features["relative_pos_dx"] = dx
+  129:         features["relative_pos_dy"] = dy
+  130:         features["relative_pos_dz"] = dz
+  131:         features["relative_distance"] = float(
+  135:     # Explicit relative-motion features.
+  137:         s = features.get(f"sender_{key}")
+  138:         r = features.get(f"receiver_{key}")
+  140:             features[f"delta_{key}"] = s - r
+  142:     sh = features.get("sender_hed")
+  143:     rh = features.get("receiver_hed")
+  146:         features["heading_difference"] = abs((sh - rh + 180) % 360 - 180)
+  148:     return features
+  182:                             label = numeric(record.get("attacker"))
+  183:                             if label not in (0.0, 1.0):
+  185:                                     f"Invalid attacker label: {label}"
+  188:                             row = make_features(record)
+  189:                             row["label"] = int(label)
+  196:             df["label"] = df["label"].astype("int8")
+  199:             counts = df["label"].value_counts().to_dict()
+  202:                 f"labels={counts}, features={df.shape[1] - 1}"
+  210:         ("imputer", SimpleImputer(strategy="median")),
+  214:         ("imputer", SimpleImputer(strategy="most_frequent")),
+  215:         ("onehot", OneHotEncoder(handle_unknown="ignore")),
+  218:     prep = ColumnTransformer([
+  248:     # In ties, choose the threshold with the best F1; no Test labels used.
+  255:         y_true, predictions, labels=[0, 1]
+  299:         # Keep the same columns for all splits.
+  300:         feature_cols = sorted(
+  301:             (set(train.columns) | set(val.columns) | set(test.columns))
+  302:             - {"label"}
+  306:             for col in feature_cols:
+  307:                 if col not in df.columns:
+  310:         # Drop features that contain no usable values in Train.
+  312:             col for col in feature_cols
+  322:         X_train = train[usable_cols]
+  323:         y_train = train["label"].to_numpy()
+  324:         X_val = val[usable_cols]
+  325:         y_val = val["label"].to_numpy()
+  326:         X_test = test[usable_cols]
+  327:         y_test = test["label"].to_numpy()
+  329:         positive = int(y_train.sum())
+  330:         negative = len(y_train) - positive
+  334:             "RandomForest": RandomForestClassifier(
+  341:             "XGBoost": XGBClassifier(
+  364:             pipe.fit(X_train, y_train)
+  366:             val_prob = pipe.predict_proba(X_val)[:, 1]
+  367:             threshold = select_threshold(y_val, val_prob)
+  369:             val_metrics = evaluate(y_val, val_prob, threshold)
+  372:             test_prob = pipe.predict_proba(X_test)[:, 1]
+  373:             test_metrics = evaluate(y_test, test_prob, threshold)
+  385:                 "train_positive_rate": float(y_train.mean()),
+  386:                 "validation_positive_rate": float(y_val.mean()),
+  387:                 "test_positive_rate": float(y_test.mean()),
+  388:                 "features_used": len(usable_cols),
+  395:                 "y_true": y_test,
+  413:         "scenario", "model", "features_used",
+
+
+====================================================================================================
+FILE: verify_scenario_labels.py
+MATCHING LINES: 24
+====================================================================================================
+   19: # The label is deliberately excluded from the payload signature.
+   21:     "sender_id",
+   22:     "sender_alias",
+   23:     "messageID",
+   24:     "rcvTime",
+   25:     "sendTime",
+   26:     "sender",
+   27:     "receiver",
+  100:         left[payload_signature(rec)][str(rec.get("attacker"))] += 1
+  103:         right[payload_signature(rec)][str(rec.get("attacker"))] += 1
+  110:     same_label_pairs = 0
+  111:     different_label_pairs = 0
+  114:     # For each exact payload, match identical labels first.
+  115:     # Remaining occurrences, if any, are cross-label matches.
+  122:         same_label_pairs += identical
+  124:         for label in set(a) | set(b):
+  125:             matched = min(a[label], b[label])
+  126:             a[label] -= matched
+  127:             b[label] -= matched
+  135:             different_label_pairs += mismatches
+  147:         "same_label_occurrences": same_label_pairs,
+  148:         "different_label_occurrences": different_label_pairs,
+  149:         "payloads_with_label_conflicts": conflicting_payloads,
+  177:     output = ROOT / "verified_payload_label_comparison.csv"
+
+
+====================================================================================================
+TOTAL MATCHING LINES: 301
+END OF AUDIT
